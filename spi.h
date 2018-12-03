@@ -38,4 +38,5 @@ typedef enum
 unsigned char spi_transmit(unsigned char daten);
 SPI_STATUS_t spi_get_status(void);
 void spi_set_status(SPI_STATUS_t status);
+void spi_init(void);
 #endif /* SPI_H_ */

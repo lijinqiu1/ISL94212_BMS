@@ -33,12 +33,12 @@ void ISL94212_Send_DEVICE_COMMAND(unsigned char cmd)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
 
@@ -64,12 +64,12 @@ unsigned short ISL94212_Read_Cell_Voltage(unsigned char cell)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                 // warte ein bischen.-
 
@@ -106,12 +106,12 @@ void ISL94212_updateReadings(void)
     }
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -147,12 +147,12 @@ unsigned char ISL94212_Read_Temperature(unsigned char num)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                // warte ein bischen.-
 
@@ -189,12 +189,12 @@ void ISL94212_updateTemperature(void)
     }
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -229,12 +229,12 @@ unsigned short ISL94212_Read_Fault(unsigned char Fault)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -272,7 +272,7 @@ void ISL94212_Clear_Fault(unsigned char Fault)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -282,7 +282,7 @@ void ISL94212_Clear_Fault(unsigned char Fault)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -306,7 +306,7 @@ void ISL94212_Set_OV(unsigned short OV)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -316,7 +316,7 @@ void ISL94212_Set_OV(unsigned short OV)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -340,7 +340,7 @@ void ISL94212_Set_UV(unsigned short UV)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -350,7 +350,7 @@ void ISL94212_Set_UV(unsigned short UV)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -374,7 +374,7 @@ void ISL94212_Set_Temperature_Limit(unsigned char Temp)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -384,7 +384,7 @@ void ISL94212_Set_Temperature_Limit(unsigned char Temp)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -408,7 +408,7 @@ void ISL94212_Set_Balance_Param(ISL94212_Balance_Setup_InitTypeDef Setup)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -418,7 +418,7 @@ void ISL94212_Set_Balance_Param(ISL94212_Balance_Setup_InitTypeDef Setup)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -452,12 +452,12 @@ void ISL94212_Set_Balance_Status(unsigned char Index,unsigned short Status)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -482,7 +482,7 @@ void ISL94212_Set_Balance_Status(unsigned char Index,unsigned short Status)
     ISL94212_Write.bits.Data = ISL94212_Balance_Setup.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -492,7 +492,7 @@ void ISL94212_Set_Balance_Status(unsigned char Index,unsigned short Status)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
@@ -502,7 +502,7 @@ void ISL94212_Set_Balance_Status(unsigned char Index,unsigned short Status)
     ISL94212_Write.bits.Data = Status&0x3fff;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -512,7 +512,7 @@ void ISL94212_Set_Balance_Status(unsigned char Index,unsigned short Status)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -540,12 +540,12 @@ void ISL94212_Set_Balance_Mode(unsigned char mode)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -570,7 +570,7 @@ void ISL94212_Set_Balance_Mode(unsigned char mode)
     ISL94212_Write.bits.Data = ISL94212_Balance_Setup.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -580,7 +580,7 @@ void ISL94212_Set_Balance_Mode(unsigned char mode)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -608,12 +608,12 @@ void ISL94212_Set_Balance_Enable(unsigned char enable)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -638,7 +638,7 @@ void ISL94212_Set_Balance_Enable(unsigned char enable)
     ISL94212_Write.bits.Data = ISL94212_Balance_Setup.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -648,7 +648,7 @@ void ISL94212_Set_Balance_Enable(unsigned char enable)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -676,12 +676,12 @@ void ISL94212_Set_Balance_Wait_Time(unsigned char time)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -706,7 +706,7 @@ void ISL94212_Set_Balance_Wait_Time(unsigned char time)
     ISL94212_Write.bits.Data = ISL94212_Balance_Setup.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -716,7 +716,7 @@ void ISL94212_Set_Balance_Wait_Time(unsigned char time)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -744,12 +744,12 @@ void ISL94212_Set_Watchdog_Time(unsigned char Watchdog)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -774,7 +774,7 @@ void ISL94212_Set_Watchdog_Time(unsigned char Watchdog)
     ISL94212_Write.bits.Data = ISL94212_WatchDog_Time.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -784,7 +784,7 @@ void ISL94212_Set_Watchdog_Time(unsigned char Watchdog)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -812,12 +812,12 @@ void ISL94212_Set_Balance_Time(unsigned char Balance_Time)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -842,7 +842,7 @@ void ISL94212_Set_Balance_Time(unsigned char Balance_Time)
     ISL94212_Write.bits.Data = ISL94212_Balance_Time.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -852,7 +852,7 @@ void ISL94212_Set_Balance_Time(unsigned char Balance_Time)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -875,7 +875,7 @@ void ISL94212_Set_Cell_Balance_Data(unsigned char num, unsigned int value)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -885,7 +885,7 @@ void ISL94212_Set_Cell_Balance_Data(unsigned char num, unsigned int value)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -894,7 +894,7 @@ void ISL94212_Set_Cell_Balance_Data(unsigned char num, unsigned int value)
     ISL94212_Write.bits.Data = (unsigned short)((value >> 14)&0x3fff);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -904,7 +904,7 @@ void ISL94212_Set_Cell_Balance_Data(unsigned char num, unsigned int value)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -929,12 +929,12 @@ unsigned short ISL94212_Read_ReferenceCoefficient(unsigned char cell)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                 // warte ein bischen.-
 
@@ -971,7 +971,7 @@ void ISL94212_Set_Cells_Balance_Enable(unsigned short Enable)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -981,7 +981,7 @@ void ISL94212_Set_Cells_Balance_Enable(unsigned short Enable)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
@@ -1009,12 +1009,12 @@ void ISL94212_Set_Device_Setup_BDDS(unsigned char BDDS)
     spi_set_status(SPI_BUSY);
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
@@ -1039,7 +1039,7 @@ void ISL94212_Set_Device_Setup_BDDS(unsigned char BDDS)
     ISL94212_Write.bits.Data = ISL94212_Device_Setup.Short;
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
     ISL94212_CS_HIGH;
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
@@ -1049,62 +1049,127 @@ void ISL94212_Set_Device_Setup_BDDS(unsigned char BDDS)
     __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
     ISL94212_CS_LOW;
-    ISL94212_SPI_transmit(ISL94212_Write.bytes[2]);
+    ISL94212_SPI_transmit(ISL94212_Write.bytes[0]);
     ISL94212_CS_HIGH;
 
     __delay_cycles(DELAY_100us);                                                   // warte ein bischen.-
     spi_set_status(SPI_READY);
+
+
+    ISL94212_CS_LOW;
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
+
+    ISL94212_CS_LOW;
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
+
+    ISL94212_CS_LOW;
+    data = ISL94212_SPI_transmit(ISL94212_DUMMY);
+    value = data<<8;
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
+
+    ISL94212_CS_LOW;
+    data = ISL94212_SPI_transmit(ISL94212_DUMMY);
+    value += data;
+    ISL94212_CS_HIGH;
 }
+
+unsigned char data;
+unsigned short value;
 
 void ISL94212_Init(void)
 {
-    //Step 1. Write Balance Value registers
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_1_BALANCE_REGISTER_ADDR,0x406A);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_2_BALANCE_REGISTER_ADDR,0x3E4D);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_3_BALANCE_REGISTER_ADDR,0x0000);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_4_BALANCE_REGISTER_ADDR,0x292F);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_5_BALANCE_REGISTER_ADDR,0x3E00);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_6_BALANCE_REGISTER_ADDR,0x0000);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_7_BALANCE_REGISTER_ADDR,0x2903);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_8_BALANCE_REGISTER_ADDR,0x3D06);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_9_BALANCE_REGISTER_ADDR,0x0000);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_10_BALANCE_REGISTER_ADDR,0x151E);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_11_BALANCE_REGISTER_ADDR,0x0502);
-    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_12_BALANCE_REGISTER_ADDR,0x06D6);
+    //enable isl94212
+    ISL94212_Balance_WathcDog_Balance_Time_InitTypedef ISL94212_WatchDog_Time;
+    ISL94212_Write_InitTypeDef ISL94212_Write;
+    ISL94212_Command_InitTypeDef ISL94212_Command;
 
-    //Step 2. Write BDDS bit in Device Setup register (turn balancing functions off during measurement)
-    ISL94212_Set_Device_Setup_BDDS(1);
+    ISL94212_Command.bits.RW = ISL94212_ACCESS_READ;
+    ISL94212_Command.bits.PAGE_ADDR = ISL94212_SETUP_REGISTERS_BASE_ADDR;
+    ISL94212_Command.bits.DATA_ADDR = ISL94212_WATCHDOG_BALANCE_TIME_REGISTER_ADDR;
+    ISL94212_Command.bits.TRAILING = 0;
 
-    //Step 3. Write balance timeout setting to the Watchdog/Balance Time register: Balance timeout code = 0000001 (20 seconds)
-    ISL94212_Set_Balance_Time(1);
+    if (spi_get_status() == SPI_BUSY)
+    {
+        return ;
+    }
 
-    //Step 4. Set up Balance Status register
+    spi_set_status(SPI_BUSY);
 
-    //Step 4A. Write Balance Setup register: Set Auto Balance mode, set 8 second Balance wait time, and set balance off:
-    ISL94212_Balance_Setup_InitTypeDef Balance_Setup;
-    Balance_Setup.bits.BMOD = ISL94212_BALANCE_MODE_AUTO;
-    Balance_Setup.bits.BWT = 8;
-    Balance_Setup.bits.BSP = 0;
-    Balance_Setup.bits.BEN = 0;
-    ISL94212_Set_Balance_Param(Balance_Setup);
+    ISL94212_CS_LOW;
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[1]);
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
-    //Step 4B. Write Balance Setup register: Set Balance Status Pointer = 1
-    //Step 4C. Write Balance Status register: Set bits 1, 4, 7 and 10
-    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_1_ADDR,0x0249);
+    ISL94212_CS_LOW;
+    ISL94212_SPI_transmit(ISL94212_Command.bytes[0]);
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-                                                  // warte ein bischen.-
 
-    //Step 4D. Write Balance Setup register: Set Balance Status Pointer = 2
-    //Step 4E. Write Balance Status register: Set bits 3, 6, 9 and 12
-    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_2_ADDR,0x0924);
+    ISL94212_CS_LOW;
+    data = ISL94212_SPI_transmit(ISL94212_DUMMY);
+    value = data<<8;
+    ISL94212_CS_HIGH;
+    __delay_cycles(DELAY_10us);                                                   // warte ein bischen.-
 
-    //Step 4F. Write Balance Setup register: Set Balance Status
-    //Step 4G. Write Balance Status register: Set bits 2, 5, 8 and 11
-    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_3_ADDR,0x0492);
+    ISL94212_CS_LOW;
+    data = ISL94212_SPI_transmit(ISL94212_DUMMY);
+    value += data;
+    ISL94212_CS_HIGH;
 
-    //Step 4H. Write Balance Setup register: Set Balance Status Pointer = 4
-    //Step 4I. Write Balance Status register: Set bits to all zero to set the end point for the instances.
-    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_4_ADDR,0x0000);
+    __delay_cycles(DELAY_10us);
 
-    //Step 5. Enable balancing using the Balance Enable command
-    ISL94212_Set_Balance_Enable(1);
+//    //Step 1. Write Balance Value registers
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_1_BALANCE_REGISTER_ADDR,0x406A);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_2_BALANCE_REGISTER_ADDR,0x3E4D);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_3_BALANCE_REGISTER_ADDR,0x0000);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_4_BALANCE_REGISTER_ADDR,0x292F);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_5_BALANCE_REGISTER_ADDR,0x3E00);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_6_BALANCE_REGISTER_ADDR,0x0000);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_7_BALANCE_REGISTER_ADDR,0x2903);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_8_BALANCE_REGISTER_ADDR,0x3D06);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_9_BALANCE_REGISTER_ADDR,0x0000);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_10_BALANCE_REGISTER_ADDR,0x151E);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_11_BALANCE_REGISTER_ADDR,0x0502);
+//    ISL94212_Set_Cell_Balance_Data(ISL94212_CELL_12_BALANCE_REGISTER_ADDR,0x06D6);
+//
+//    //Step 2. Write BDDS bit in Device Setup register (turn balancing functions off during measurement)
+//    ISL94212_Set_Device_Setup_BDDS(1);
+//
+//    //Step 3. Write balance timeout setting to the Watchdog/Balance Time register: Balance timeout code = 0000001 (20 seconds)
+//    ISL94212_Set_Balance_Time(1);
+//
+//    //Step 4. Set up Balance Status register
+//
+//    //Step 4A. Write Balance Setup register: Set Auto Balance mode, set 8 second Balance wait time, and set balance off:
+//    ISL94212_Balance_Setup_InitTypeDef Balance_Setup;
+//    Balance_Setup.bits.BMOD = ISL94212_BALANCE_MODE_AUTO;
+//    Balance_Setup.bits.BWT = 8;
+//    Balance_Setup.bits.BSP = 0;
+//    Balance_Setup.bits.BEN = 0;
+//    ISL94212_Set_Balance_Param(Balance_Setup);
+//
+//    //Step 4B. Write Balance Setup register: Set Balance Status Pointer = 1
+//    //Step 4C. Write Balance Status register: Set bits 1, 4, 7 and 10
+//    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_1_ADDR,0x0249);
+//
+//    //Step 4D. Write Balance Setup register: Set Balance Status Pointer = 2
+//    //Step 4E. Write Balance Status register: Set bits 3, 6, 9 and 12
+//    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_2_ADDR,0x0924);
+//
+//    //Step 4F. Write Balance Setup register: Set Balance Status
+//    //Step 4G. Write Balance Status register: Set bits 2, 5, 8 and 11
+//    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_3_ADDR,0x0492);
+//
+//    //Step 4H. Write Balance Setup register: Set Balance Status Pointer = 4
+//    //Step 4I. Write Balance Status register: Set bits to all zero to set the end point for the instances.
+//    ISL94212_Set_Balance_Status(ISL94212_BALANCE_STATUS_REGISTER_4_ADDR,0x0000);
+//
+//    //Step 5. Enable balancing using the Balance Enable command
+//    ISL94212_Set_Balance_Enable(1);
 
 }

@@ -28,23 +28,23 @@ void spi_init(void)
       P2OUT |= BIT0;                                                                 // .-
 
       UCB0CTL1 |= UCSWRST;                                                           // Reset
-      UCB0CTL0 |= UCCKPL + UCMSB + UCMST + UCMODE_0 + UCSYNC;                        // 3-pin, 8-bit SPI master
+      UCB0CTL0 |= UCCKPH + UCMSB + UCMST + UCMODE_0 + UCSYNC;                        // 3-pin, 8-bit SPI master
       UCB0CTL1 |= UCSSEL_2;                                                          // SMCLK
       UCB0BR0 |= 0x02;                                                               // /2 ...
       UCB0BR1 = 0;                                                                   // .-
-      //UCA0MCTL = 0;                                                                // No modulation
+      //UCB0MCTL = 0;                                                                // No modulation
       UCB0CTL1 &= ~UCSWRST;                                                          // Initialize USCI state machine
 
       __delay_cycles(DELAY_100ms);                                                   // Warte 100ms
       while (!(IFG2 & UCB0TXIFG));                                                   // Warte bist übermittelt
-      UCB0TXBUF = 0x00;                                                              // Dummy Senden
+//      UCB0TXBUF = 0x00;                                                              // Dummy Senden
 }
 
 unsigned char spi_transmit(unsigned char daten)
 {
-    UCA0TXBUF = daten;                                                             // Sende Datensatz
-    while(UCA0STAT & UCBUSY);                                                      // Warte bist übermittelt
-    return UCA0RXBUF;                                                              // Gebe empfangenen Datensatz zurück
+    UCB0TXBUF = daten;                                                             // Sende Datensatz
+    while(UCB0STAT & UCBUSY);                                                      // Warte bist übermittelt
+    return UCB0RXBUF;                                                              // Gebe empfangenen Datensatz zurück
 }
 
 

@@ -164,31 +164,34 @@
 #define ISL94212_WATCHDOG_DISABLE                        0x00
 #define ISL94212_BALANCE_CYCLE_DISABLE                   0x00
 /*************************************************************/
+#pragma pack(1)
 typedef union
 {
     unsigned char bytes[2];
     struct
     {
-        unsigned char RW        :1;
-        unsigned char PAGE_ADDR :3;
-        unsigned char DATA_ADDR :6;
         unsigned char TRAILING  :6;
+        unsigned char DATA_ADDR :6;
+        unsigned char PAGE_ADDR :3;
+        unsigned char RW        :1;
     }bits;
 
 }ISL94212_Command_InitTypeDef;
 
+#pragma pack(1)
 typedef union
 {
     unsigned char bytes[3];
     struct
     {
-        unsigned char RW        :1;
-        unsigned char PAGE_ADDR :3;
-        unsigned char DATA_ADDR :6;
         unsigned short Data     :14;
+        unsigned char DATA_ADDR :6;
+        unsigned char PAGE_ADDR :3;
+        unsigned char RW        :1;
     }bits;
 }ISL94212_Write_InitTypeDef;
 
+#pragma pack(1)
 typedef union
 {
     unsigned short Short;
@@ -202,6 +205,7 @@ typedef union
     }bits;
 }ISL94212_Balance_Setup_InitTypeDef;
 
+#pragma pack(1)
 typedef union
 {
     unsigned short Short;
@@ -213,6 +217,7 @@ typedef union
     }bits;
 }ISL94212_Balance_WathcDog_Balance_Time_InitTypedef;
 
+#pragma pack(1)
 typedef union
 {
     unsigned short Short;
@@ -229,4 +234,8 @@ typedef union
         unsigned char WP             :6;
     }bits;
 }ISL94212_Device_Setup_InitTypedef;
+
+void ISL94212_Init(void);
+void ISL94212_updateReadings(void);
+
 #endif /* ISL94212_H_ */
